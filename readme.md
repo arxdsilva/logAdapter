@@ -30,6 +30,8 @@ func readByte() {
 }
 
 func TestReadByte(t *testing.T) {
+    // remove std adapter 
+    // this prevents double logging
     log.RemoveAdapter("stdout")
     log.AddAdapter("adapter", log.AdapterPod{Adapter:la.LogAdapter, Config: nil})
     var buf bytes.Buffer
@@ -38,6 +40,7 @@ func TestReadByte(t *testing.T) {
         l.SetOutput(os.Stderr)
     }()
     readByte()
+    // do something with the logs
     t.Log(buf.String())
 }
 ```
