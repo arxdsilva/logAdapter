@@ -1,6 +1,6 @@
 ## LogAdapter
 
-This repo is a adapter to the package `nuveo/log` that uses Golang's standard `log` instead of `fmt` package to write into stdout. This is useful for testing if a application logged something by setting the log to a buffer.
+This repo is a adapter to the package [nuveo/log](github.com/nuveo/log) that uses Golang's standard `log` instead of `fmt` package to write into stdout. This is useful for testing if a application logged something by setting the log to a buffer.
 
 
 ## [Testing logs with this adapter](https://stackoverflow.com/questions/44119951/how-to-check-a-log-output-in-go-test)
@@ -13,12 +13,12 @@ import (
     "bytes"
     "fmt"
     "io"
-    l "log"
-    // using `arxdsilva` and not `nuveo` due to a needed typo fix 
-    "github.com/arxdsilva/log"
-    la "github.com/arxdsilva/logAdapter"
     "os"
     "testing"
+    l "log"
+
+    "github.com/nuveo/log"
+    la "github.com/arxdsilva/logAdapter"
 )
 
 func readByte() {
