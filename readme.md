@@ -13,9 +13,10 @@ import (
     "bytes"
     "fmt"
     "io"
+    l "log"
     // using `arxdsilva` and not `nuveo` due to a needed typo fix 
     "github.com/arxdsilva/log"
-    "github.com/arxdsilva/logAdapter"
+    la "github.com/arxdsilva/logAdapter"
     "os"
     "testing"
 )
@@ -32,9 +33,9 @@ func TestReadByte(t *testing.T) {
     log.RemoveAdapter("stdout")
     log.AddAdapter("adapter", log.AdapterPod{Adapter:la.LogAdapter, Config: nil})
     var buf bytes.Buffer
-    log.SetOutput(&buf)
+    l.SetOutput(&buf)
     defer func() {
-        log.SetOutput(os.Stderr)
+        l.SetOutput(os.Stderr)
     }()
     readByte()
     t.Log(buf.String())
